@@ -4,28 +4,32 @@ import java.util.ArrayList;
 
 public class Student extends Thread {
     private PrinterMonitor printer;
-    private ArrayList<Document> doc_list;
+    private ArrayList<Document> documentList;
     private String name;
+    private int documentLabelHelper;
 
 
 
-    public Student(PrinterMonitor printer,ThreadGroup threadGroup,String name) {
+    public Student(PrinterMonitor printer,ThreadGroup threadGroup,String name,int DocumentLabelHelper) {
         super(threadGroup,name);
         this.printer = printer;
         this.name = name;
-        doc_list = new ArrayList<>();
+        this.documentLabelHelper = DocumentLabelHelper;
+
+        documentList = new ArrayList<>();
     }
 
     public void addDocument(Document document) {
-        this.doc_list.add(document);
+        this.documentList.add(document);
     }
 
     public void run()
     {
-        for (int i = 0; i < this.doc_list.size(); i++)
+        generateRandomDocuments();
+        for (int i = 0; i < this.documentList.size(); i++)
         {
-            printer.addDocument(doc_list.get(i));
-            printer.printDocument(doc_list.get(i));
+            printer.addDocument(documentList.get(i));
+            printer.printDocument(documentList.get(i));
             try {
                 sleep(100);
             } catch (InterruptedException e) {
@@ -35,6 +39,18 @@ public class Student extends Thread {
         printer.increaseFinishedCount();
 
     }
+
+    public void generateRandomDocuments() {
+        for (int i = 0; i < 5; i++) {
+            documentList.add(new Document(this.getName(), "Document "+(i - (-documentLabelHelper)), generateRandomNumber(10, 19)));
+        }
+    }
+    public int generateRandomNumber(int min,int max) {
+        return ((int) (Math.random() * (max - min)) + 1)+min;
+    }
+
+
+
 
 
 

@@ -20,12 +20,15 @@ public class PaperTechnician extends Thread {
         while (printer.getFinishedcount()<printer.getTotalStudentThreads() && i<attempts) {
             printer.refillPaper();
             try {
-                sleep(100);
+                sleep(generateRandomNumber(1,5000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             i++;
         }
 
+    }
+    public int generateRandomNumber(int min,int max) {
+        return ((int) (Math.random() * (max - min)) + 1)+min;
     }
 }

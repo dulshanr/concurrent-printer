@@ -1,16 +1,17 @@
 package coursework;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PrinterMonitor implements ServicePrinter {
-
     private int currentPaperLevel ;
     private int currentTonerLevel;
     private ArrayList<Document> documentBuffer;
     private int finishedStudentThreads;
     private int totalStudentThreads;
     private String printerId;
-    private int printedCount;
+    private int printedDocumentCount;
 
 
     public PrinterMonitor( int totalStudentThreads,String printerId) {
@@ -21,12 +22,13 @@ public class PrinterMonitor implements ServicePrinter {
         currentTonerLevel = Full_Toner_Level;
         currentPaperLevel = Full_Paper_Tray;
         finishedStudentThreads = 0;
-        printedCount = 0;
+        printedDocumentCount = 0;
 
     }
 
     public synchronized void printDocument(Document document) {
-
+        System.out.println(logHelper(document.getDocOwner()+" attempting to print "
+                +document.getDocTitle()+" of "+document.getPages()+ " pages"));
         while ( (document.getPages()> currentTonerLevel) || (document.getPages()> currentPaperLevel) || documentBuffer.size() == 0)
         {
             try {
@@ -38,10 +40,13 @@ public class PrinterMonitor implements ServicePrinter {
         currentPaperLevel -= document.getPages();
         currentTonerLevel -= document.getPages();
         documentBuffer.remove(document);
-        printedCount++;
+        printedDocumentCount ++;
 
-        System.out.println("Printing, Owner: " + document.getDocOwner() + " Title: "
-                + document.getDocTitle() + " NoPages: " + document.getPages()+" Printer Level: pages_avail "+ currentPaperLevel +" toner: avail "+ currentTonerLevel);
+        System.out.println(logHelper("AFTER PRINTING STATE "+this.toString()));
+
+
+//        String message = "Printing, Owner: " + document.getDocOwner() + " Title: "
+//                + document.getDocTitle() + " NoPages: " + document.getPages()+" Printer Level: pages_avail "+ currentPaperLevel +" toner: avail "+ currentTonerLevel;
 
         notifyAll();
     }
@@ -60,6 +65,7 @@ public class PrinterMonitor implements ServicePrinter {
     }
 
     public synchronized void refillPaper() {
+        System.out.println(logHelper("Paper Technician attempting to refill paper"));
 
         while ( !(Full_Paper_Tray - currentPaperLevel >=SheetsPerPack) )
         {
@@ -71,12 +77,13 @@ public class PrinterMonitor implements ServicePrinter {
             } catch(InterruptedException e){ }
         }
         currentPaperLevel += SheetsPerPack;
-        System.out.println("RefillPaper, paper with refilled: " + currentPaperLevel);
+        System.out.println(logHelper("AFTER REFILLING PAPER "+this.toString()));
         notifyAll();
 
     }
 
     public synchronized void replaceTonerCartridge() {
+        System.out.println(logHelper("Toner Technician attempting to replace toner"));
         while ( (getMinimumPagesFromBuffer()< currentTonerLevel && currentTonerLevel >Minimum_Toner_Level))
         {
             try {
@@ -88,7 +95,7 @@ public class PrinterMonitor implements ServicePrinter {
         }
         currentTonerLevel = PagesPerTonerCartridge;
 
-        System.out.println("RefillToner, toner with refilled: " + currentTonerLevel);
+        System.out.println(logHelper("AFTER REPLACING TONER "+this.toString()));
         notifyAll();
 
     }
@@ -118,14 +125,19 @@ public class PrinterMonitor implements ServicePrinter {
         return totalStudentThreads;
     }
 
-    public void logHelper() {
-
+    @Override
+    public String toString() {
+        return "PrinterStatus: [" +
+                "printerID=" + printerId +
+                ", currentPaperLevel=" + currentPaperLevel +
+                ", currentTonerLevel=" + currentTonerLevel +
+                ", printedCount=" + printedDocumentCount +
+                ']';
     }
 
-
-    //    public void displayList() {
-//        System.out.println("Total No: "+document_buffer.size());
-//    }
-
+    public String logHelper(String message) {
+        String dateTimeString = "("+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())+") ";
+        return dateTimeString+message;
+    }
 
 }
