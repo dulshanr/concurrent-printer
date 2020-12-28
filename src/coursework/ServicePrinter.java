@@ -30,7 +30,7 @@ public interface ServicePrinter extends Printer
 
     public void replaceTonerCartridge( ) ;
 
-    public void refillPaper( ) ;
+    public void refillPaper() ;
 
     
 } // ServicePrinter

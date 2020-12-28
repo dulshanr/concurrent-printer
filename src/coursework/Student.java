@@ -9,7 +9,8 @@ public class Student extends Thread {
 
 
 
-    public Student(PrinterMonitor printer,String name) {
+    public Student(PrinterMonitor printer,ThreadGroup threadGroup,String name) {
+        super(threadGroup,name);
         this.printer = printer;
         this.name = name;
         doc_list = new ArrayList<>();
@@ -24,7 +25,7 @@ public class Student extends Thread {
         for (int i = 0; i < this.doc_list.size(); i++)
         {
             printer.addDocument(doc_list.get(i));
-            printer.print(doc_list.get(i),name);
+            printer.printDocument(doc_list.get(i));
             try {
                 sleep(100);
             } catch (InterruptedException e) {

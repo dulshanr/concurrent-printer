@@ -1,43 +1,24 @@
 package coursework;
 
 public class TonerTechnician extends Thread {
-    private PrinterMonitor printer;
-    private int paperCartridge;
+    private final PrinterMonitor printer;
     private int attempts;
+    private String name;
 
-    public TonerTechnician(PrinterMonitor printer, int paperCartridge, int attempts) {
+    public TonerTechnician(PrinterMonitor printer,ThreadGroup threadGroup,String name, int attempts) {
+        super(threadGroup,name);
         this.printer = printer;
-        this.paperCartridge = paperCartridge;
         this.attempts = attempts;
-    }
-
-    public PrinterMonitor getPrinter() {
-        return printer;
-    }
-
-    public int getPaperCartridge() {
-        return paperCartridge;
+        this.name = name;
     }
 
 
-    public int getAttempts() {
-        return attempts;
-    }
 
     public void run()
     {
-//        for (int i = 0; i < attempts; i++)
-//        {
-//            printer.refilltoner(20);
-//            try {
-//                sleep(100);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
         int i = 0;
-        while (printer.getFinishedcount()<4 && i<3) {
-            printer.refilltoner(20);
+        while (printer.getFinishedcount()<printer.getTotalStudentThreads() && i<attempts) {
+            printer.replaceTonerCartridge();
             try {
                 sleep(100);
             } catch (InterruptedException e) {

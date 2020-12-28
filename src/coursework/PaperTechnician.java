@@ -3,39 +3,22 @@ package coursework;
 public class PaperTechnician extends Thread {
 
     private PrinterMonitor printer;
-    private int paperPacket;
+    private String name;
+    private int attempts;
 
-    public PaperTechnician(PrinterMonitor printer, int paperPacket) {
+    public PaperTechnician(PrinterMonitor printer,ThreadGroup threadGroup,String name, int attempts) {
+        super(threadGroup,name);
         this.printer = printer;
-        this.paperPacket = paperPacket;
+        this.attempts = attempts;
+        this.name = name;
     }
 
-    public PrinterMonitor getPrinter() {
-        return printer;
-    }
-
-    public int getPaperPacket() {
-        return paperPacket;
-    }
-
-    public void setPaperPacket(int paperPacket) {
-        this.paperPacket = paperPacket;
-    }
 
     public void run()
     {
-//        for (int i = 0; i < 3; i++)
-//        {
-//            printer.refillPaper(20);
-//            try {
-//                sleep(100);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
         int i = 0;
-        while (printer.getFinishedcount()<4 && i<3) {
-            printer.refillPaper(50);
+        while (printer.getFinishedcount()<printer.getTotalStudentThreads() && i<attempts) {
+            printer.refillPaper();
             try {
                 sleep(100);
             } catch (InterruptedException e) {
@@ -43,8 +26,6 @@ public class PaperTechnician extends Thread {
             }
             i++;
         }
-
-
 
     }
 }
