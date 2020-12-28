@@ -8,17 +8,13 @@ public class Tester {
 
         PrinterMonitor printer = new PrinterMonitor(4,"PrintMax V1.0");
 
-
         Student s1 = new Student(printer,studentThreadGroup,"student1",1);
-
 
         Student s2 = new Student(printer,studentThreadGroup,"student2",6);
 
         Student s3 = new Student(printer,studentThreadGroup,"student3",11);
 
-
         Student s4 = new Student(printer,studentThreadGroup,"student4",16);
-
 
         PaperTechnician t1 = new PaperTechnician(printer,technicianThreadGroup,"paper_technician",3);
         TonerTechnician t2 = new TonerTechnician(printer ,technicianThreadGroup,"toner_technician", 3);

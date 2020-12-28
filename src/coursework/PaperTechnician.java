@@ -17,7 +17,7 @@ public class PaperTechnician extends Thread {
     public void run()
     {
         int i = 0;
-        while (printer.getFinishedcount()<printer.getTotalStudentThreads() && i<attempts) {
+        while (printer.getFinishedCount()<printer.getTotalStudentThreads() && i<attempts) {
             printer.refillPaper();
             try {
                 sleep(generateRandomNumber(1,5000));

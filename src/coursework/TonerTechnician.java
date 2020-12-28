@@ -12,12 +12,10 @@ public class TonerTechnician extends Thread {
         this.name = name;
     }
 
-
-
     public void run()
     {
         int i = 0;
-        while (printer.getFinishedcount()<printer.getTotalStudentThreads() && i<attempts) {
+        while (printer.getFinishedCount()<printer.getTotalStudentThreads() && i<attempts) {
             printer.replaceTonerCartridge();
             try {
                 sleep(generateRandomNumber(1,5000));

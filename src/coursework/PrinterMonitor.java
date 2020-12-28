@@ -33,7 +33,9 @@ public class PrinterMonitor implements ServicePrinter {
         {
             try {
                 wait() ;
-            } catch(InterruptedException e){ }
+            } catch(InterruptedException e){
+                e.printStackTrace();
+            }
         }
 
 
@@ -74,7 +76,9 @@ public class PrinterMonitor implements ServicePrinter {
                     return;
                 }
                 wait() ;
-            } catch(InterruptedException e){ }
+            } catch(InterruptedException e){
+                e.printStackTrace();
+            }
         }
         currentPaperLevel += SheetsPerPack;
         System.out.println(logHelper("AFTER REFILLING PAPER "+this.toString()));
@@ -91,7 +95,9 @@ public class PrinterMonitor implements ServicePrinter {
                     return;
                 }
                 wait() ;
-            } catch(InterruptedException e){ }
+            } catch(InterruptedException e){
+                e.printStackTrace();
+            }
         }
         currentTonerLevel = PagesPerTonerCartridge;
 
@@ -104,7 +110,7 @@ public class PrinterMonitor implements ServicePrinter {
         finishedStudentThreads++;
         notifyAll();
     }
-    public synchronized int getFinishedcount() {
+    public synchronized int getFinishedCount() {
         return finishedStudentThreads;
     }
 
