@@ -26,14 +26,24 @@ public class TonerTechnician extends Thread {
 
     public void run()
     {
-        for (int i = 0; i < attempts; i++)
-        {
+//        for (int i = 0; i < attempts; i++)
+//        {
+//            printer.refilltoner(20);
+//            try {
+//                sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        int i = 0;
+        while (printer.getFinishedcount()<4 && i<3) {
             printer.refilltoner(20);
             try {
                 sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            i++;
         }
     }
 

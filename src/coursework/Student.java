@@ -31,6 +31,8 @@ public class Student extends Thread {
                 e.printStackTrace();
             }
         }
+        printer.increaseFinishedCount();
+
     }
 
 

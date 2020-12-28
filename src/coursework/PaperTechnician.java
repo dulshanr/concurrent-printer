@@ -24,14 +24,27 @@ public class PaperTechnician extends Thread {
 
     public void run()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            printer.refillPaper(20);
+//        for (int i = 0; i < 3; i++)
+//        {
+//            printer.refillPaper(20);
+//            try {
+//                sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        int i = 0;
+        while (printer.getFinishedcount()<4 && i<3) {
+            printer.refillPaper(50);
             try {
                 sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            i++;
         }
+
+
+
     }
 }
