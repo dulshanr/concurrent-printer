@@ -1,22 +1,30 @@
 package coursework;
+/** ******************************************************************
+ * File:      PaperTechnician.java (CLASS)
+ * Author:    K.A.D.S Ratnayake
+ * Contents:  6SENG002W CWK
+ *            This defines the Paper Technician's abilities.
+ * Date:      28/12/20
+ * Version:   1.0
+ ****************************************************************** */
 
 public class PaperTechnician extends Thread {
-
-    private PrinterMonitor printer;
-    private String name;
+//paper technician attributes
+    private LaserPrinter printer;
     private int attempts;
 
-    public PaperTechnician(PrinterMonitor printer,ThreadGroup threadGroup,String name, int attempts) {
+//constructor
+    public PaperTechnician(LaserPrinter printer, ThreadGroup threadGroup, String name, int attempts) {
         super(threadGroup,name);
         this.printer = printer;
         this.attempts = attempts;
-        this.name = name;
     }
 
-
+//starting the thread will invoke this method
     public void run()
     {
         int i = 0;
+        //follow the loop until all students have finished printing and attempts is less than 3
         while (printer.getFinishedCount()<printer.getTotalStudentThreads() && i<attempts) {
             printer.refillPaper();
             try {
@@ -28,6 +36,7 @@ public class PaperTechnician extends Thread {
         }
 
     }
+    //logic to generate a random from a range
     public int generateRandomNumber(int min,int max) {
         return ((int) (Math.random() * (max - min)) + 1)+min;
     }

@@ -1,24 +1,32 @@
 package coursework;
+/** ******************************************************************
+ * File:      PrintingSystem.java (CLASS)
+ * Author:    K.A.D.S Ratnayake
+ * Contents:  6SENG002W CWK
+ *            This defines the Printer the Printing system
+ *            (This is the tester class).
+ * Date:      28/12/20
+ * Version:   1.0
+ ****************************************************************** */
 
-public class Tester {
+public class PrintingSystem {
     public static void main(String[] args) {
-
+        //thread groups
         ThreadGroup studentThreadGroup = new ThreadGroup("StudentGroup");
         ThreadGroup technicianThreadGroup = new ThreadGroup("TechnicalGroup");
+        //creating printer instance
+        LaserPrinter printer = new LaserPrinter(4,"PrintMax V1.0");
 
-        PrinterMonitor printer = new PrinterMonitor(4,"PrintMax V1.0");
-
+        //creating student instances
         Student s1 = new Student(printer,studentThreadGroup,"student1",1);
-
         Student s2 = new Student(printer,studentThreadGroup,"student2",6);
-
         Student s3 = new Student(printer,studentThreadGroup,"student3",11);
-
         Student s4 = new Student(printer,studentThreadGroup,"student4",16);
-
+        //creating toner and paper technicians.
         PaperTechnician t1 = new PaperTechnician(printer,technicianThreadGroup,"paper_technician",3);
         TonerTechnician t2 = new TonerTechnician(printer ,technicianThreadGroup,"toner_technician", 3);
 
+        //starting the threads
         s1.start();
         s2.start();
         s3.start();
@@ -33,6 +41,7 @@ public class Tester {
             s4.join();
             t1.join();
             t2.join();
+            //thus main thread will only execute last print statement when the threads have finished
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
