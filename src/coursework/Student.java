@@ -37,7 +37,7 @@ public class Student extends Thread {
             printer.addDocument(documentList.get(i));
             printer.printDocument(documentList.get(i));
             try {
-                sleep(100);
+                sleep(generateRandomNumber(1,200));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -48,7 +48,8 @@ public class Student extends Thread {
     //generate documents with random page numbers
     public void generateRandomDocuments() {
         for (int i = 0; i < 5; i++) {
-            documentList.add(new Document(this.getName(), "Document "+(i - (-documentLabelHelper)), generateRandomNumber(10, 19)));
+            documentList.add(new Document(this.getName(), "Document"+Utility.UNDER_SCORE
+                    +(i - (-documentLabelHelper)), generateRandomNumber(10, 17)));
         }
     }
     //logic to generate random numbers

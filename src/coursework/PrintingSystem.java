@@ -15,13 +15,13 @@ public class PrintingSystem {
         ThreadGroup studentThreadGroup = new ThreadGroup("StudentGroup");
         ThreadGroup technicianThreadGroup = new ThreadGroup("TechnicalGroup");
         //creating printer instance
-        LaserPrinter printer = new LaserPrinter(4,"PrintMax V1.0");
+        LaserPrinter printer = new LaserPrinter(201,100,4,"PrintMax V1.0");
 
         //creating student instances
-        Student s1 = new Student(printer,studentThreadGroup,"student1",1);
-        Student s2 = new Student(printer,studentThreadGroup,"student2",6);
-        Student s3 = new Student(printer,studentThreadGroup,"student3",11);
-        Student s4 = new Student(printer,studentThreadGroup,"student4",16);
+        Student s1 = new Student(printer,studentThreadGroup,"Student_1",1);
+        Student s2 = new Student(printer,studentThreadGroup,"Student_2",6);
+        Student s3 = new Student(printer,studentThreadGroup,"Student_3",11);
+        Student s4 = new Student(printer,studentThreadGroup,"Student_4",16);
         //creating toner and paper technicians.
         PaperTechnician t1 = new PaperTechnician(printer,technicianThreadGroup,"paper_technician",3);
         TonerTechnician t2 = new TonerTechnician(printer ,technicianThreadGroup,"toner_technician", 3);

@@ -32,21 +32,22 @@ public class LaserPrinter implements ServicePrinter {
      */
 
     //constructor.
-    public LaserPrinter(int totalStudentThreads, String printerId) {
+    public LaserPrinter(int initialPaperLevel,int initialTonerLevel,int totalStudentThreads, String printerId) {
 
         this.totalStudentThreads = totalStudentThreads;
         this.documentBuffer = new ArrayList<>();
         this.printerId = printerId;
-        currentTonerLevel = Full_Toner_Level;
-        currentPaperLevel = Full_Paper_Tray;
+        currentTonerLevel = initialTonerLevel;
+        currentPaperLevel = initialPaperLevel;
         finishedStudentThreads = 0;
         printedDocumentCount = 0;
 
     }
     //printing method process.
     public synchronized void printDocument(Document document) {
-        System.out.println(logHelper(document.getDocOwner()+" attempting to print "
-                +document.getDocTitle()+" of "+document.getPages()+ " pages"));
+        System.out.println(logHelper(document.getDocOwner()+Utility.EMPTY_SPACE+"attempting to print"
+                +Utility.EMPTY_SPACE +document.getDocTitle()+Utility.EMPTY_SPACE+"of"
+                +Utility.EMPTY_SPACE+document.getPages()+Utility.EMPTY_SPACE+"pages"));
         /*
         checks whether available toner is not enough for document to be printed or available paper level is
         not enough to print the document or the document buffer is empty.
@@ -67,7 +68,8 @@ public class LaserPrinter implements ServicePrinter {
         documentBuffer.remove(document);
         printedDocumentCount ++;
 
-        System.out.println(logHelper("AFTER PRINTING STATE "+this.toString()));
+        System.out.println(logHelper(document.getDocOwner()+Utility.COMMA+Utility.EMPTY_SPACE
+                +"AFTER PRINTING STATE"+Utility.EMPTY_SPACE +this.toString()));
 
         notifyAll();
     }
@@ -86,7 +88,7 @@ public class LaserPrinter implements ServicePrinter {
     }
 //refill paper whenever possible
     public synchronized void refillPaper() {
-        System.out.println(logHelper("Paper Technician attempting to refill paper"));
+        System.out.println(logHelper(Utility.GREEN_BOLD+ "Paper Technician attempting to refill paper"+Utility.RESET));
         /*
         try to refill as soon as space is available
         i.e below condition.
@@ -104,13 +106,14 @@ public class LaserPrinter implements ServicePrinter {
         }
         //refilling process.
         currentPaperLevel += SheetsPerPack;
-        System.out.println(logHelper("AFTER REFILLING PAPER "+this.toString()));
+        System.out.println(logHelper(Utility.GREEN_BOLD+"AFTER REFILLING PAPER"+Utility.EMPTY_SPACE
+                +this.toString())+Utility.RESET);
         notifyAll();
 
     }
     //replace toner method
     public synchronized void replaceTonerCartridge() {
-        System.out.println(logHelper("Toner Technician attempting to replace toner"));
+        System.out.println(logHelper(Utility.YELLOW_BOLD+"Toner Technician attempting to replace toner"+Utility.RESET));
         /*
             make sure current toner is enough to print the document in the buffer and
             toner level is anyway greater than 10.
@@ -133,7 +136,8 @@ public class LaserPrinter implements ServicePrinter {
         //replacing toner.
         currentTonerLevel = PagesPerTonerCartridge;
 
-        System.out.println(logHelper("AFTER REPLACING TONER "+this.toString()));
+        System.out.println(logHelper(Utility.YELLOW_BOLD+"AFTER REPLACING TONER"
+                +Utility.EMPTY_SPACE+this.toString()+Utility.RESET));
         notifyAll();
 
     }
@@ -174,12 +178,13 @@ public class LaserPrinter implements ServicePrinter {
                 "printerID=" + printerId +
                 ", currentPaperLevel=" + currentPaperLevel +
                 ", currentTonerLevel=" + currentTonerLevel +
-                ", printedCount=" + printedDocumentCount +
+                ", printedDocumentCount=" + printedDocumentCount +
                 ']';
     }
     //helper function to log the message with the date.
     public String logHelper(String message) {
-        String dateTimeString = "("+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())+") ";
+        String dateTimeString = Utility.LEFT_BRACKET+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+                .format(new Date())+Utility.RIGHT_BRACKET+Utility.EMPTY_SPACE;
         return dateTimeString+message;
     }
 
