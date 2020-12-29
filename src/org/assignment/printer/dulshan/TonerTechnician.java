@@ -1,4 +1,4 @@
-package coursework;
+package org.assignment.printer.dulshan;
 /** ******************************************************************
  * File:      TonerTechnician.java (CLASS)
  * Author:    K.A.D.S Ratnayake

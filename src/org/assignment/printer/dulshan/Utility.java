@@ -1,4 +1,4 @@
-package coursework;
+package org.assignment.printer.dulshan;
 
 public class Utility {
     public static final String GREEN_BOLD = "\033[1;32m";

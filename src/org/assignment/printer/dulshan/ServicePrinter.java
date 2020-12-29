@@ -1,4 +1,4 @@
-package coursework;
+package org.assignment.printer.dulshan;
 
 /** **************************************************************
  * File:      ServicePrinter.java (INTERFACE)	

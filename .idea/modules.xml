@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ConcurrentExamples.iml" filepath="$PROJECT_DIR$/ConcurrentExamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConcurrentAssignment.iml" filepath="$PROJECT_DIR$/ConcurrentAssignment.iml" />
     </modules>
   </component>
 </project>
