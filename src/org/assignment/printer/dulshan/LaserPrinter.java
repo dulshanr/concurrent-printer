@@ -97,6 +97,8 @@ public class LaserPrinter implements ServicePrinter {
         {
             try {
                 if (finishedStudentThreads == totalStudentThreads) {
+                    System.out.println(Utility.GREEN_BOLD+"Students have finished printing all the documents, " +
+                            "therefore Paper Technician is exiting the attempt"+Utility.RESET);
                     return;
                 }
                 wait() ;
@@ -126,6 +128,8 @@ public class LaserPrinter implements ServicePrinter {
                     as all students have finished printing.
                  */
                 if (finishedStudentThreads == totalStudentThreads) {
+                    System.out.println(Utility.YELLOW_BOLD+"Students have finished printing all the documents, " +
+                            "therefore Toner Technician is exiting the attempt"+Utility.RESET);
                     return;
                 }
                 wait() ;
