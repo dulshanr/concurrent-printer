@@ -25,7 +25,9 @@ public class PaperTechnician extends Thread {
     {
         int i = 0;
         //follow the loop until all students have finished printing and attempts is less than 3
-        while (printer.getFinishedCount()<printer.getTotalStudentThreads() && i<attempts) {
+        while (i<attempts) {
+            System.out.println(Utility.GREEN_BOLD+"Paper technician attempting " +
+                    "to refill papers with attempt : "+((i)-(-1))+Utility.RESET);
             printer.refillPaper();
             try {
                 sleep(generateRandomNumber(1,5000));

@@ -88,7 +88,6 @@ public class LaserPrinter implements ServicePrinter {
     }
 //refill paper whenever possible
     public synchronized void refillPaper() {
-        System.out.println(logHelper(Utility.GREEN_BOLD+ "Paper Technician attempting to refill paper"+Utility.RESET));
         /*
         try to refill as soon as space is available
         i.e below condition.
@@ -115,7 +114,6 @@ public class LaserPrinter implements ServicePrinter {
     }
     //replace toner method
     public synchronized void replaceTonerCartridge() {
-        System.out.println(logHelper(Utility.YELLOW_BOLD+"Toner Technician attempting to replace toner"+Utility.RESET));
         /*
             make sure current toner is enough to print the document in the buffer and
             toner level is anyway greater than 10.
@@ -150,10 +148,6 @@ public class LaserPrinter implements ServicePrinter {
         finishedStudentThreads++;
         notifyAll();
     }
-    //returning the finished count
-    public synchronized int getFinishedCount() {
-        return finishedStudentThreads;
-    }
 
     /*
         logic implemented to get the minimum pages from
@@ -169,10 +163,6 @@ public class LaserPrinter implements ServicePrinter {
             }
         }
         return min;
-    }
-    //returning the total student threads.
-    public int getTotalStudentThreads() {
-        return totalStudentThreads;
     }
 
     //toString method to print the current status of the printer.
