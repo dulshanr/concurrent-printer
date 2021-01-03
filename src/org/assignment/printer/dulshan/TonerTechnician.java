@@ -9,7 +9,7 @@ package org.assignment.printer.dulshan;
  ****************************************************************** */
 
 public class TonerTechnician extends Thread {
-    //paper technician attributes
+    //paper technician attributes.
     private final LaserPrinter printer;
     private int attempts;
 
@@ -24,7 +24,7 @@ public class TonerTechnician extends Thread {
     public void run()
     {
         int i = 0;
-        //follow the loop until all students have finished printing and attempts is less than 3
+        //follow the loop until all students have finished printing and attempts is less than 3.
         while (i<attempts) {
             System.out.println(Utility.YELLOW_BOLD+"Toner technician attempting " +
                     "to replace the toner with attempt : "+((i)-(-1))+Utility.RESET);
@@ -37,7 +37,7 @@ public class TonerTechnician extends Thread {
             i++;
         }
     }
-    //logic to generate a random from a range
+    //logic to generate a random from a range.
     public int generateRandomNumber(int min,int max) {
         return ((int) (Math.random() * (max - min)) + 1)+min;
     }

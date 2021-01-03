@@ -42,17 +42,17 @@ public class Student extends Thread {
                 e.printStackTrace();
             }
         }
-        // update the finished counter
+        // update the finished counter.
         printer.increaseFinishedCount();
     }
-    //generate documents with random page numbers
+    //generate documents with random page numbers.
     public void generateRandomDocuments() {
         for (int i = 0; i < 5; i++) {
             documentList.add(new Document(this.getName(), "Document"+Utility.UNDER_SCORE
                     +(i - (-documentLabelHelper)), generateRandomNumber(10, 17)));
         }
     }
-    //logic to generate random numbers
+    //logic to generate random numbers.
     public int generateRandomNumber(int min,int max) {
         return ((int) (Math.random() * (max - min)) + 1)+min;
     }

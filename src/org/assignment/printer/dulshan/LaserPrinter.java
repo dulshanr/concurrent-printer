@@ -73,7 +73,7 @@ public class LaserPrinter implements ServicePrinter {
 
         notifyAll();
     }
-//adding document to buffer
+//adding document to buffer.
     public synchronized void addDocument(Document document) {
         while (documentBuffer.size() != 0) {
             try {
@@ -86,7 +86,7 @@ public class LaserPrinter implements ServicePrinter {
         notifyAll();
 
     }
-//refill paper whenever possible
+//refill paper whenever possible.
     public synchronized void refillPaper() {
         /*
         try to refill as soon as space is available
@@ -112,7 +112,7 @@ public class LaserPrinter implements ServicePrinter {
         notifyAll();
 
     }
-    //replace toner method
+    //replace toner method.
     public synchronized void replaceTonerCartridge() {
         /*
             make sure current toner is enough to print the document in the buffer and

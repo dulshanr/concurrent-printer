@@ -26,12 +26,12 @@ public interface ServicePrinter extends Printer
     public final int PagesPerTonerCartridge  = 500 ;
 
 
-    // Technician methods
+    // Technician methods.
 
     public void replaceTonerCartridge( ) ;
 
     public void refillPaper() ;
 
     
-} // ServicePrinter
+} // ServicePrinter.
 

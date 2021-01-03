@@ -10,11 +10,11 @@ package org.assignment.printer.dulshan;
  ****************************************************************** */
 
 public class Document {
-    //document attributes
+    //document attributes.
     private String docOwner;
     private String docTitle;
     private int pages;
-//constructor
+//constructor.
     public Document(String docOwner, String docTitle, int pages) {
         this.docOwner = docOwner;
         this.docTitle = docTitle;

@@ -11,13 +11,13 @@ package org.assignment.printer.dulshan;
 
 public class PrintingSystem {
     public static void main(String[] args) {
-        //thread groups
+        //thread groups.
         ThreadGroup studentThreadGroup = new ThreadGroup("StudentGroup");
         ThreadGroup technicianThreadGroup = new ThreadGroup("TechnicalGroup");
         //creating printer instance
         LaserPrinter printer = new LaserPrinter(201,100,4,"PrintMax V1.0");
 
-        //creating student instances
+        //creating student instances.
         Student s1 = new Student(printer,studentThreadGroup,"Student_1",1);
         Student s2 = new Student(printer,studentThreadGroup,"Student_2",6);
         Student s3 = new Student(printer,studentThreadGroup,"Student_3",11);
@@ -26,7 +26,7 @@ public class PrintingSystem {
         PaperTechnician t1 = new PaperTechnician(printer,technicianThreadGroup,"paper_technician",3);
         TonerTechnician t2 = new TonerTechnician(printer ,technicianThreadGroup,"toner_technician", 3);
 
-        //starting the threads
+        //starting the threads.
         s1.start();
         s2.start();
         s3.start();
@@ -41,7 +41,7 @@ public class PrintingSystem {
             s4.join();
             t1.join();
             t2.join();
-            //thus main thread will only execute last print statement when the threads have finished
+            //thus main thread will only execute last print statement when the threads have finished.
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
