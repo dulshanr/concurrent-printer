@@ -1,0 +1,47 @@
+//constants
+const MAX_PAPER_LEVEL = 3
+const MIN_PRINT_PAPER_LEVEL=1
+const MIN_PAPER_LEVL=0
+const MIN_PRINT_DOCUMENT = 1
+const MIN_DOCUMENT=0
+//ranges
+range PRINT_Paper_Level =  MIN_PRINT_PAPER_LEVEL .. MAX_PAPER_LEVEL
+range PAPER_Level = MIN_PAPER_LEVL .. MAX_PAPER_LEVEL 
+set PRINT_Actions = { print[PRINT_Paper_Level], print.acquire,refill.acquire,release,refill,not.empty.acquire,not.empty }
+set PRINTER_Users = { tech, std1,std2}
+
+//printer FINITE STATE MACHINE
+PRINTER = PRINTER_FREE[MAX_PAPER_LEVEL] ,
+PRINTER_FREE[papers_available : PAPER_Level] = (when(papers_available>MIN_PAPER_LEVL)print.acquire -> PRINT[papers_available]
+|when(papers_available>MIN_PAPER_LEVL) not.empty.acquire-> EMPTY_PRINTER[papers_available]
+|when(papers_available==MIN_PAPER_LEVL) refill.acquire-> REFILL_PRINTER[MAX_PAPER_LEVEL]) ,
+
+EMPTY_PRINTER[papers_available : PRINT_Paper_Level]=(not.empty-> RELEASE_PRINTER[papers_available]),
+REFILL_PRINTER[refill_papers : PAPER_Level]=(refill-> RELEASE_PRINTER[refill_papers]),
+PRINT[papers_available : PRINT_Paper_Level] =(print[papers_available] -> RELEASE_PRINTER[papers_available-1]),
+
+RELEASE_PRINTER[papers : PAPER_Level]=(release->PRINTER_FREE[papers]).  
+
+
+//student FINITE STATE MACHINE
+STUDENT( DOCUMENTS = 3 ) = STUDENT_PRINT[DOCUMENTS],
+STUDENT_PRINT[document_number : MIN_DOCUMENT..DOCUMENTS] = (when(document_number>MIN_DOCUMENT) print.acquire ->STUDENT_PRINT_DOCUMENT[document_number]
+| when(document_number==MIN_DOCUMENT) terminate ->END),
+
+STUDENT_PRINT_DOCUMENT[document_number:MIN_PRINT_DOCUMENT .. DOCUMENTS] = (print[PRINT_Paper_Level] ->STUDENT_RELEASE_PRINTER[document_number-1]),
+STUDENT_RELEASE_PRINTER [document :MIN_DOCUMENT..DOCUMENTS] = (release->STUDENT_PRINT[document])
++PRINT_Actions.
+
+
+
+//technician FINITE STATE MACHINE
+TECHNICIAN = ( refill.acquire-> TECHNICIAN_REFILL| not.empty.acquire->TECHNICIAN_NOT_EMPTY),
+
+TECHNICIAN_REFILL = (refill -> TECHNICIAN_PRINTER_RELEASE),
+TECHNICIAN_NOT_EMPTY = (not.empty -> TECHNICIAN_PRINTER_RELEASE),
+
+TECHNICIAN_PRINTER_RELEASE = (release -> TECHNICIAN)
+ +PRINT_Actions.
+
+//COMPOSITE PROCESS
+|| PRINTER_PROCESS = ( PRINTER_Users :: PRINTER|| std1 : STUDENT ( 3 )|| std2 : STUDENT ( 2 ) ||tech : TECHNICIAN).

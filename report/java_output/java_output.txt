@@ -1,0 +1,56 @@
+"C:\Program Files\Java\jdk1.8.0_202\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\lib\idea_rt.jar=53383:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_202\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\rt.jar;C:\Users\Dulshan Ratnayake\Desktop\ConcurrentAssignment\out\production\ConcurrentAssignment" org.assignment.printer.dulshan.PrintingSystem
+Toner technician attempting to replace the toner with attempt : 1
+Paper technician attempting to refill papers with attempt : 1
+(2021-01-04 03:51:37.203) Student_1 attempting to print Document_1 of 14 pages
+(2021-01-04 03:51:37.204) Student_1, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=187, currentTonerLevel=86, printedDocumentCount=1]
+(2021-01-04 03:51:37.205) Student_2 attempting to print Document_6 of 14 pages
+(2021-01-04 03:51:37.205) Student_2, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=173, currentTonerLevel=72, printedDocumentCount=2]
+(2021-01-04 03:51:37.206) AFTER REFILLING PAPER PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=223, currentTonerLevel=72, printedDocumentCount=2]
+(2021-01-04 03:51:37.206) Student_4 attempting to print Document_16 of 14 pages
+(2021-01-04 03:51:37.206) Student_4, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=209, currentTonerLevel=58, printedDocumentCount=3]
+(2021-01-04 03:51:37.207) Student_3 attempting to print Document_11 of 15 pages
+(2021-01-04 03:51:37.207) Student_3, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=194, currentTonerLevel=43, printedDocumentCount=4]
+(2021-01-04 03:51:37.281) Student_1 attempting to print Document_2 of 12 pages
+(2021-01-04 03:51:37.281) Student_1, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=182, currentTonerLevel=31, printedDocumentCount=5]
+(2021-01-04 03:51:37.284) Student_2 attempting to print Document_7 of 11 pages
+(2021-01-04 03:51:37.284) Student_2, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=171, currentTonerLevel=20, printedDocumentCount=6]
+(2021-01-04 03:51:37.316) Student_4 attempting to print Document_17 of 12 pages
+(2021-01-04 03:51:37.316) Student_4, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=159, currentTonerLevel=8, printedDocumentCount=7]
+(2021-01-04 03:51:37.316) AFTER REPLACING TONER PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=159, currentTonerLevel=500, printedDocumentCount=7]
+(2021-01-04 03:51:37.322) Student_1 attempting to print Document_3 of 14 pages
+(2021-01-04 03:51:37.322) Student_1, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=145, currentTonerLevel=486, printedDocumentCount=8]
+(2021-01-04 03:51:37.408) Student_2 attempting to print Document_8 of 14 pages
+(2021-01-04 03:51:37.408) Student_2, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=131, currentTonerLevel=472, printedDocumentCount=9]
+(2021-01-04 03:51:37.408) Student_3 attempting to print Document_12 of 15 pages
+(2021-01-04 03:51:37.408) Student_3, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=116, currentTonerLevel=457, printedDocumentCount=10]
+(2021-01-04 03:51:37.443) Student_4 attempting to print Document_18 of 17 pages
+(2021-01-04 03:51:37.443) Student_4, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=99, currentTonerLevel=440, printedDocumentCount=11]
+(2021-01-04 03:51:37.493) Student_4 attempting to print Document_19 of 16 pages
+(2021-01-04 03:51:37.493) Student_4, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=83, currentTonerLevel=424, printedDocumentCount=12]
+(2021-01-04 03:51:37.513) Student_2 attempting to print Document_9 of 13 pages
+(2021-01-04 03:51:37.513) Student_2, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=70, currentTonerLevel=411, printedDocumentCount=13]
+(2021-01-04 03:51:37.523) Student_1 attempting to print Document_4 of 13 pages
+(2021-01-04 03:51:37.523) Student_1, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=57, currentTonerLevel=398, printedDocumentCount=14]
+(2021-01-04 03:51:37.537) Student_3 attempting to print Document_13 of 12 pages
+(2021-01-04 03:51:37.537) Student_3, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=45, currentTonerLevel=386, printedDocumentCount=15]
+(2021-01-04 03:51:37.565) Student_1 attempting to print Document_5 of 11 pages
+(2021-01-04 03:51:37.565) Student_1, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=34, currentTonerLevel=375, printedDocumentCount=16]
+(2021-01-04 03:51:37.649) Student_4 attempting to print Document_20 of 17 pages
+(2021-01-04 03:51:37.649) Student_4, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=17, currentTonerLevel=358, printedDocumentCount=17]
+(2021-01-04 03:51:37.670) Student_2 attempting to print Document_10 of 11 pages
+(2021-01-04 03:51:37.670) Student_2, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=6, currentTonerLevel=347, printedDocumentCount=18]
+(2021-01-04 03:51:37.693) Student_3 attempting to print Document_14 of 17 pages
+Toner technician attempting to replace the toner with attempt : 2
+Paper technician attempting to refill papers with attempt : 2
+(2021-01-04 03:51:41.105) AFTER REFILLING PAPER PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=56, currentTonerLevel=347, printedDocumentCount=18]
+(2021-01-04 03:51:41.106) Student_3, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=39, currentTonerLevel=330, printedDocumentCount=19]
+(2021-01-04 03:51:41.214) Student_3 attempting to print Document_15 of 14 pages
+(2021-01-04 03:51:41.214) Student_3, AFTER PRINTING STATE PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=25, currentTonerLevel=316, printedDocumentCount=20]
+Students have finished printing all the documents, therefore Toner Technician is exiting the attempt
+Paper technician attempting to refill papers with attempt : 3
+(2021-01-04 03:51:41.981) AFTER REFILLING PAPER PrinterStatus: [printerID=PrintMax V1.0, currentPaperLevel=75, currentTonerLevel=316, printedDocumentCount=20]
+Toner technician attempting to replace the toner with attempt : 3
+Students have finished printing all the documents, therefore Toner Technician is exiting the attempt
+All documents have been printed and the threads have finished their lifecycle
+
+Process finished with exit code 0
